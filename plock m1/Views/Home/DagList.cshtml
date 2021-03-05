@@ -1,0 +1,65 @@
+﻿@model IEnumerable<plock_m1.Models.dag>
+
+@{
+    ViewData["Title"] = "Dag list";
+}
+
+<h1>Dag List</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Week)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WeekDag)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Naam)
+            </th>
+            <th>
+                Tijd
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Klanten)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Week)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.WeekDag)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date.Day)-@Html.DisplayFor(modelItem => item.Date.Month)-@Html.DisplayFor(modelItem => item.Date.Year)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Naam)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BeginTijd)-@Html.DisplayFor(modelItem => item.EindTijd)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Klanten)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    </td>
+                </tr>
+        }
+    </tbody>
+</table>
