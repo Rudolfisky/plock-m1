@@ -1,0 +1,87 @@
+﻿@model IEnumerable<BLL.Dag>
+
+@{
+    ViewData["Title"] = "DagList";
+}
+
+<h1>DagList</h1>
+
+<p>
+    <a asp-action="CreateDag">Create New</a>
+</p>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Week)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WeekDag)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DagType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Naam)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Beschrijving)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BeginTijd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EindTijd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Klanten)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Week)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WeekDag)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DagType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Naam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Beschrijving)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BeginTijd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EindTijd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Klanten)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "DagDetails", new { id=item.ID })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

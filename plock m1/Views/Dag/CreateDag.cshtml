@@ -1,0 +1,87 @@
+﻿@model plock_m1.Models.DagModel
+
+@{
+    ViewData["Title"] = "CreateDag";
+}
+
+<h1>CreateDag</h1>
+
+<h4>DagModel</h4>
+<hr />
+<script type="text/javascript">
+    var rad = document.DagForm.myRadios;
+    //var prev = null;
+    for (var i = 0; i < rad.length; i++) {
+        rad[i].addEventListener('change', function () {
+            //if (this !== prev) {
+            //    prev = this;
+            //}
+            document.getElementById('eventInfo').style.visibility = 'hidden';
+
+            console.log(this.value)
+        });
+    }
+
+</script>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateDag" name="DagForm">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Date" class="control-label"></label>
+                <input asp-for="Date" class="form-control" type="date"/>
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+            @*<div class="form-group">
+            <label asp-for="DagType" class="control-label"></label>
+            <input asp-for="DagType" class="form-control" required />
+            <span asp-validation-for="DagType" class="text-danger"></span>
+            </div>*@
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="DagType" value="avond" id="avond" checked="checked">
+                <label class="form-check-label" asp-for="DagType" onchange="DayType(checked)">
+                    Regular Night
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="DagType" value="event" id="event">
+                <label class="form-check-label" asp-for="DagType" onchange="DayType(checked)">
+                    Event
+                </label>
+            </div>
+            <div id="eventInfo">
+                <div class="form-group">
+                    <label asp-for="Naam" class="control-label"></label>
+                    <input asp-for="Naam" class="form-control" />
+                    <span asp-validation-for="Naam" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Beschrijving" class="control-label"></label>
+                    <input asp-for="Beschrijving" class="form-control" />
+                    <span asp-validation-for="Beschrijving" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="BeginTijd" class="control-label"></label>
+                <input asp-for="BeginTijd" class="form-control" />
+                <span asp-validation-for="BeginTijd" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EindTijd" class="control-label"></label>
+                <input asp-for="EindTijd" class="form-control" />
+                <span asp-validation-for="EindTijd" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

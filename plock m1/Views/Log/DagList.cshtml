@@ -4,12 +4,12 @@
     ViewData["Title"] = "Dag list";
 }
 <style>
-    #klantenLink {
+    #alternateLink {
         color:grey;
     }
-    #klantenLink:hover {
+    #alternateLink:hover {
         transition-duration: .3s;
-        transition-delay:.1s;
+        transition-delay: .1s;
         background-color: rgba(0,0,0,.05);
         color: black;
     }
@@ -21,7 +21,7 @@
 </style>
     <div class="d-flex">    
         <div id="dagenLink" class="p-2 flex-grow-1"><h1>Dagen</h1></div>
-        <div id="klantenLink" class="p-2 flex-grow-1"><a asp-action="KlantList"><h1>Klanten</h1></a></div>
+        <div id="alternateLink" class="p-2 flex-grow-1"><a asp-action="KlantList"><h1>Klanten</h1></a></div>
     </div>
 
     <p>
@@ -74,9 +74,7 @@
                         @Html.DisplayFor(modelItem => item.Klanten)
                     </td>
                     <td>
-                        @Html.ActionLink("Edit", "Edit", new { /*id=item.PrimaryKey */ }) |
-                        @Html.ActionLink("Details", "DagDetails", new { id = item.ID }) |
-                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                        @Html.ActionLink("Details", "DagDetails", new { ID = item.ID })
                     </td>
                 </tr>
             }
