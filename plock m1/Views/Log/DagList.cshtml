@@ -1,0 +1,84 @@
+﻿@model IEnumerable<BLL.Dag>
+
+@{
+    ViewData["Title"] = "Dag list";
+}
+<style>
+    #klantenLink {
+        color:grey;
+    }
+    #klantenLink:hover {
+        transition-duration: .3s;
+        transition-delay:.1s;
+        background-color: rgba(0,0,0,.05);
+        color: black;
+    }
+    .listItem:hover {
+        transition-duration: .3s;
+        background-color: lightblue !important;
+        color: black;
+    }
+</style>
+    <div class="d-flex">    
+        <div id="dagenLink" class="p-2 flex-grow-1"><h1>Dagen</h1></div>
+        <div id="klantenLink" class="p-2 flex-grow-1"><a asp-action="KlantList"><h1>Klanten</h1></a></div>
+    </div>
+
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Week)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.WeekDag)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Naam)
+                </th>
+                <th>
+                    Tijd
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Klanten)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr class="listItem" onclick="location.href = '@Url.Action("DagDetails", "Log", new { id=item.ID })'">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Week)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.WeekDag)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date.Day)-@Html.DisplayFor(modelItem => item.Date.Month)-@Html.DisplayFor(modelItem => item.Date.Year)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Naam)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BeginTijd)-@Html.DisplayFor(modelItem => item.EindTijd)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Klanten)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { /*id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Details", "DagDetails", new { id = item.ID }) |
+                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
