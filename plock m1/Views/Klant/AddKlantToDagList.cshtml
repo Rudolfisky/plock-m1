@@ -1,0 +1,87 @@
+﻿@model IEnumerable<BLL.Klant>
+
+@{
+    ViewData["Title"] = "KlantenByDag";
+}
+
+<h1> @ViewBag.DagNaam@ViewBag.DagDate </h1>
+
+<p>
+    @ViewBag.tempID
+    <a asp-action="GoBack">Go Back</a>
+</p>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                Naam
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TelNR)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Postcode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HuisNR)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DOB)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Aankomst)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vertrek)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Voornaam)
+                    @Html.DisplayFor(modelItem => item.Tussenvoegsel)
+                    @Html.DisplayFor(modelItem => item.Achternaam)
+                </td>
+                <td>
+                    @*@if (item.TelNR != null)
+                        {
+                            Html.Display("ja");
+                        }
+                        else
+                        {
+                            Html.Display("nee");
+                        }*@
+                    @Html.DisplayFor(modelItem => item.TelNR)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Postcode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HuisNR)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DOB.Day)-@Html.DisplayFor(modelItem => item.DOB.Month)-@Html.DisplayFor(modelItem => item.DOB.Year)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Aankomst.TimeOfDay)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Vertrek.TimeOfDay)
+                </td>
+                <td>
+                    @Html.ActionLink("Add", "Add", new { /* id=item.PrimaryKey */ })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

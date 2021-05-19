@@ -5,6 +5,9 @@ namespace CL
 {
     public interface IKlantDAL
     {
-        void Update() { }       
+        void KlantUpdate(KlantDTO klantDTO) { }
+        void KlantDagUpdate(KlantDTO klantDTO) { }
+
+
     }
 }

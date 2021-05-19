@@ -7,7 +7,7 @@
 <h1>KlantList</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="CreateKlant">Create New</a>
 </p>
 <table class="table table-striped">
     <thead>
@@ -74,7 +74,7 @@
                 @item.DOB.ToString("d")
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Edit", "KlantUpdate", new {  ID=item.ID }) |
                 @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
                 @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
             </td>

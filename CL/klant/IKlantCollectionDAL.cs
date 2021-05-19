@@ -6,9 +6,12 @@ namespace CL
 {
     public interface IKlantCollectionDAL
     {
-        void Create(KlantDTO klantDTO);
+        void CreateKlant(KlantDTO klantDTO) { }
         void Delete(KlantDTO klantDTO);
         IEnumerable<KlantDTO> GetAllKlanten();
+        IEnumerable<KlantDTO> GetKlantById(int ID);
+        IEnumerable<KlantDTO> GetKlantDagById(int ID);
         IEnumerable<KlantDTO> GetKlantenByDag(int dagID);
+        IEnumerable<KlantDTO> GetNotKlantenByDag(int dagID);
     }
 }

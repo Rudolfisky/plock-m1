@@ -7,7 +7,8 @@
 <h1> @ViewBag.DagNaam@ViewBag.DagDate </h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="CreateKlantToDag">Create New</a> |
+    @Html.ActionLink("Add Existing", "AddKlantToDagList", new { ID = ViewBag.dagID }) ViewBag.dagID
 </p>
 <table class="table table-striped">
     <thead>
@@ -43,19 +44,19 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Voornaam) 
-                @Html.DisplayFor(modelItem => item.Tussenvoegsel) 
+                @Html.DisplayFor(modelItem => item.Voornaam)
+                @Html.DisplayFor(modelItem => item.Tussenvoegsel)
                 @Html.DisplayFor(modelItem => item.Achternaam)
             </td>
             <td>
                 @*@if (item.TelNR != null)
-                {
-                    Html.Display("ja");
-                }
-                else
-                {
-                    Html.Display("nee");
-                }*@
+            {
+                Html.Display("ja");
+            }
+            else
+            {
+                Html.Display("nee");
+            }*@
                 @Html.DisplayFor(modelItem => item.TelNR)
             </td>
             <td>
@@ -70,16 +71,22 @@
             <td>
                 @Html.DisplayFor(modelItem => item.DOB.Day)-@Html.DisplayFor(modelItem => item.DOB.Month)-@Html.DisplayFor(modelItem => item.DOB.Year)
             </td>
+
             <td>
-                @Html.DisplayFor(modelItem => item.Aankomst.TimeOfDay)
+                @if (item.Aankomst != new DateTime(0001, 1, 1, 00, 00, 00))
+                {
+                    @Html.DisplayFor(modelItem => item.Aankomst.TimeOfDay)
+                }
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Vertrek.TimeOfDay)
+                @if (item.Vertrek != new DateTime(0001, 1, 1, 00, 00, 00))
+                {
+                    @Html.DisplayFor(modelItem => item.Vertrek.TimeOfDay)
+                }
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Edit", "KlantDagUpdate", new { id = item.ID, DagID = ViewBag.DagID }) |
+                @Html.ActionLink("Remove From Day", "Delete", new { /* id=item.PrimaryKey */ })
             </td>
         </tr>
 }

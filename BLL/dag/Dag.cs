@@ -64,5 +64,19 @@ namespace BLL
             // Return the week of our adjusted day
             return CultureInfo.InvariantCulture.Calendar.GetWeekOfYear(time, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday);
         }
+        public void EditDag()
+        {
+            DagDTO editedDagDTO = new DagDTO
+            {
+                dagID = ID,
+                Date = Date,
+                Naam = Naam,
+                DagType = DagType,
+                BeginTijd = BeginTijd,
+                EindTijd = EindTijd,
+                Beschrijving = Beschrijving
+            };
+            _dagDAL.UpdateDag(editedDagDTO);
+        }
     }
 }

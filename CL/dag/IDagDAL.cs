@@ -6,6 +6,6 @@ namespace CL
 {
     public interface IDagDAL
     {
-        public void Update();
+        void UpdateDag(DagDTO dagDTO);
     }
 }

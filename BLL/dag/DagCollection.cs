@@ -57,5 +57,9 @@ namespace BLL
             };
             _dagCollectionDAL.UpdateDag(editedDagDTO);
         }
+        public void DagDelete(int ID) 
+        {
+            _dagCollectionDAL.DagDelete(ID);
+        }
     }
 }

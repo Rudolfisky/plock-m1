@@ -1,0 +1,53 @@
+﻿@model plock_m1.Models.KlantDagModel
+
+@{
+    ViewData["Title"] = "KlantDagModel";
+}
+
+<h1>KlantDagModel</h1>
+
+<h4>KlantDagModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="KlantDagModel">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ID" class="control-label"></label>
+                <input asp-for="ID" class="form-control" />
+                <span asp-validation-for="ID" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+
+            </div>
+            <div class="form-group form-check">
+
+            </div>
+            <div class="form-group">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="AankomstSet" /> Aankomst
+                </label>
+                <input asp-for="Aankomst" class="form-control" />
+                <span asp-validation-for="Aankomst" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="VertrekSet" /> Vertrek
+                </label>
+                <input asp-for="Vertrek" class="form-control" />
+                <span asp-validation-for="Vertrek" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

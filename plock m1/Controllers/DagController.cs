@@ -102,7 +102,8 @@ namespace plock_m1.Controllers
                     EindTijd = newDagModel.EindTijd,
                     Beschrijving = newDagModel.Beschrijving
                 };
-                _dagCollection.EditDag(newDag);
+                //_dagCollection.EditDag(newDag);
+                newDag.EditDag();
             }
             else
             {
@@ -115,8 +116,20 @@ namespace plock_m1.Controllers
                     EindTijd = newDagModel.EindTijd
 
                 };
-                _dagCollection.EditDag(newDag);
+                //_dagCollection.EditDag(newDag);
+                newDag.EditDag();
             }
+            return RedirectToAction("DagList", "Dag");
+        }
+        public IActionResult DagDelete(int ID) 
+        {
+            Dag dag = _dagCollection.GetDagById(ID);
+            return View(dag);
+        }
+        [HttpPost]
+        public IActionResult DagDelete(Dag dag)
+        {
+            _dagCollection.DagDelete(dag.ID);
             return RedirectToAction("DagList", "Dag");
         }
     }

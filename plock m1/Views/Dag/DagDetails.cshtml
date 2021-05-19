@@ -56,6 +56,6 @@
 </div>
 <div>
     @Html.ActionLink("Edit", "EditDag", new { ID = Model.ID }) |
-    <a href='@Url.Action("KlantenByDag", "Klant", new { dagID = Model.ID })'>Klanten</a> |
+    <a href='@Url.Action("KlantenByDag", "Klant", new { ID = Model.ID })'>Klanten</a> |
     <a asp-action="DagList">Back to List</a>
 </div>

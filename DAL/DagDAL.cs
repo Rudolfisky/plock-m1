@@ -9,10 +9,6 @@ namespace DAL
 {
     public class DagDAL : IDagDAL, IDagCollectionDAL
     {
-        public void Update()
-        {
-
-        }
         public IEnumerable<DagDTO> GetDagById(int ID) 
         {
 			string sql = @"SELECT 
@@ -112,6 +108,20 @@ namespace DAL
 
 			DataBaseAccess.SaveData(sql, dagDTO);
 		}
+		public void DagDelete(int ID) 
+		{
+			string sql = @"DELETE FROM [dbo].[dag]
+                           WHERE [dagID] = @ID";
 
+			var dictionary = new Dictionary<string, object>
+			{
+				{"@ID", ID}
+
+			};
+
+			var parameters = new DynamicParameters(dictionary);
+
+			DataBaseAccess.DeleteData<DagDTO>(sql, parameters);
+		}
 	}
 }
