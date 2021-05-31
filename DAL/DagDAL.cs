@@ -122,6 +122,11 @@ namespace DAL
 			var parameters = new DynamicParameters(dictionary);
 
 			DataBaseAccess.DeleteData<DagDTO>(sql, parameters);
+
+			sql = @"DELETE FROM [dbo].[dagpersooninfo]
+                           WHERE [dagID] = @ID";
+
+			DataBaseAccess.DeleteData<DagDTO>(sql, parameters);
 		}
 	}
 }

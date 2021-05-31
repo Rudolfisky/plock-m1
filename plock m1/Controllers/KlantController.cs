@@ -52,7 +52,7 @@ namespace plock_m1.Controllers
 
             //IEnumerable<Klant> klanten = _klantCollection.GetKlantenByDag(ID);
             IEnumerable<Klant> klanten = _klantCollection.GetNotKlantenByDag(ID);
-            ViewBag.tempID = ID;
+            ViewBag.DagID = ID;
             return View(klanten);
         }
         public IActionResult CreateKlant()
@@ -163,7 +163,34 @@ namespace plock_m1.Controllers
             
             return RedirectToAction("KlantList", "Klant", new { ID = ViewBag.dagID });
         }
-        
+        public IActionResult RemoveFromDay(int ID, int DagID) 
+        {
+            _klantCollection.RemoveKlantFromDag(ID, DagID);
+            return RedirectToAction("KlantenByDag", "Klant", new { ID = DagID });
+        }
+
+        public IActionResult AddKlantDag(int ID, int DagID)
+        {
+            ViewBag.ID = ID;
+            ViewBag.dagID = DagID;
+            DateTime nullDate = new DateTime(0001, 1, 1, 00, 00, 00);
+            KlantDagModel newKlantModel = new KlantDagModel
+            {
+                Aankomst = nullDate,
+                AankomstSet = false,
+                Vertrek = nullDate,
+                VertrekSet = false
+            };
+            return View(newKlantModel);
+        }
+        [HttpPost]
+        public IActionResult AddKlantDag(KlantDagModel klantDagModel, int ID, int DagID) 
+        {
+            _klantCollection.addKlantToDag(ID, DagID, klantDagModel.Aankomst, klantDagModel.Vertrek);
+            return RedirectToAction("AddKlantToDagList", "Klant", new { ID = DagID });
+        }
+
+
 
     }
 }

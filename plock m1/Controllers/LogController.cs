@@ -25,7 +25,6 @@ namespace plock_m1.Controllers
         public IActionResult DagList()
         {
 
-            Test.test();
             //DagenSetup();
             //for (int i = 0; i < 50; i++)
             //{

@@ -31,11 +31,10 @@ namespace BLL
         }
         public Klant GetKlantDagById(int ID) 
         {
-            KlantDTO klantDTO = _klantCollectionDAL.GetKlantDagById(ID).FirstOrDefault();
+            KlantDTO klantDTO = _klantCollectionDAL.GetKlantById(ID).FirstOrDefault();
             Klant klant = new Klant(klantDTO);
             return klant;
         }
-        public void CreateKlant(KlantDTO klantDTO) { }
         public void CreateKlant(Klant newKlant)
         {
             KlantDTO newKlantDTO = new KlantDTO
@@ -131,5 +130,14 @@ namespace BLL
             }
             return klanten;
         }
+        public void addKlantToDag(int klantID, int dagID, DateTime aankomst, DateTime vertrek) 
+        {
+            _klantCollectionDAL.AddKlantToDag(klantID, dagID, aankomst, vertrek);
+        }
+        public void RemoveKlantFromDag(int klantID, int dagID)
+        {
+            _klantCollectionDAL.RemoveKlantFromDag(klantID, dagID);
+        }
+
     }
 }

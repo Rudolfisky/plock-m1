@@ -7,8 +7,7 @@
 <h1> @ViewBag.DagNaam@ViewBag.DagDate </h1>
 
 <p>
-    @ViewBag.tempID
-    <a asp-action="GoBack">Go Back</a>
+    @Html.ActionLink("Back", "KlantenByDag", new { ID = ViewBag.dagID })
 </p>
 <table class="table table-striped">
     <thead>
@@ -79,7 +78,7 @@
                     @Html.DisplayFor(modelItem => item.Vertrek.TimeOfDay)
                 </td>
                 <td>
-                    @Html.ActionLink("Add", "Add", new { /* id=item.PrimaryKey */ })
+                    @Html.ActionLink("Add To Day", "AddKlantDag", new { id = item.ID, DagID = ViewBag.DagID })
                 </td>
             </tr>
         }

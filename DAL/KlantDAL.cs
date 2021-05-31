@@ -183,5 +183,34 @@ namespace DAL
 
             return DataBaseAccess.LoadData<KlantDTO>(sql, parameters);
         }
-    }
+		public void AddKlantToDag(int klantID, int dagID, DateTime aankomst, DateTime vertrek)
+		{
+			string sql = @"INSERT INTO dbo.[dagpersooninfo] (DagID, persoonInfoID)
+                            VALUES(@DagID, @persoonInfoID);";
+
+			var dictionary = new Dictionary<string, object>
+			{
+				{"@persoonInfoID", klantID},
+				{"@DagID", dagID},
+			};
+
+			DataBaseAccess.SaveData(sql, dictionary);
+		}
+		public void RemoveKlantFromDag(int KlantID, int DagID)
+		{
+			string sql = @"DELETE FROM [dbo].[dagpersooninfo]
+                           WHERE [dagID] = @DagID AND [persoonInfoID] = @KlantID";
+
+			var dictionary = new Dictionary<string, object>
+			{
+				{"@KlantID", KlantID},
+				{"@DagID", DagID}
+			};
+
+			var parameters = new DynamicParameters(dictionary);
+
+			DataBaseAccess.DeleteData<DagDTO>(sql, parameters);
+		}
+
+	}
 }

@@ -13,5 +13,7 @@ namespace CL
         IEnumerable<KlantDTO> GetKlantDagById(int ID);
         IEnumerable<KlantDTO> GetKlantenByDag(int dagID);
         IEnumerable<KlantDTO> GetNotKlantenByDag(int dagID);
+        void AddKlantToDag(int klantID, int dagID, DateTime aankomst, DateTime vertrek);
+        void RemoveKlantFromDag(int KlantID, int DagID);
     }
 }

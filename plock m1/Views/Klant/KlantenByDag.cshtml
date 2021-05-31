@@ -7,8 +7,8 @@
 <h1> @ViewBag.DagNaam@ViewBag.DagDate </h1>
 
 <p>
-    <a asp-action="CreateKlantToDag">Create New</a> |
-    @Html.ActionLink("Add Existing", "AddKlantToDagList", new { ID = ViewBag.dagID }) ViewBag.dagID
+    <a href='@Url.Action("DagDetails", "Dag", new { ID = ViewBag.dagID })'>back</a> |
+    @Html.ActionLink("Add Existing", "AddKlantToDagList", new { ID = ViewBag.dagID })
 </p>
 <table class="table table-striped">
     <thead>
@@ -86,7 +86,7 @@
             </td>
             <td>
                 @Html.ActionLink("Edit", "KlantDagUpdate", new { id = item.ID, DagID = ViewBag.DagID }) |
-                @Html.ActionLink("Remove From Day", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Remove From Day", "RemoveFromDay", new { id = item.ID, DagID = ViewBag.DagID })
             </td>
         </tr>
 }

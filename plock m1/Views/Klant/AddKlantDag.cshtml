@@ -1,0 +1,36 @@
+﻿@model plock_m1.Models.KlantDagModel
+
+@{
+    ViewData["Title"] = "KlantDagModel";
+}
+
+<h1>KlantDagModel</h1>
+
+<h4>KlantDagModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddKlantDag" asp-route-ID="@ViewBag.ID" asp-route-DagID="@ViewBag.DagID">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input asp-for="Aankomst" class="form-control" />
+                <span asp-validation-for="Aankomst" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input asp-for="Vertrek" class="form-control" />
+                <span asp-validation-for="Vertrek" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="AddKlantToDagList" asp-route-ID="@ViewBag.DagID">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
