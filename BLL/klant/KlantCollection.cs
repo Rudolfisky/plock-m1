@@ -9,7 +9,16 @@ namespace BLL
 {
     public class KlantCollection
     {
-        IKlantCollectionDAL _klantCollectionDAL = FactoryKlantDAL.CreateKlantCollectionDAL();
+        IKlantCollectionDAL _klantCollectionDAL;
+
+        public KlantCollection()
+        {
+            _klantCollectionDAL = FactoryKlantDAL.CreateKlantCollectionDAL();
+        }
+        public KlantCollection(IKlantCollectionDAL klantCollectionDAL)
+        {
+            _klantCollectionDAL = klantCollectionDAL;
+        }
         public IEnumerable<Klant> GetAllKlanten()
         {
             //List <Klant> klanten = new List<Klant>();
