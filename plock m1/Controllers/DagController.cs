@@ -15,21 +15,13 @@ namespace plock_m1.Controllers
         public IActionResult DagList()
         {
             IEnumerable<Dag> dagen = _dagCollection.GetAllDagen();
-            return View(dagen);
+            List<Dag> sortedDagen = dagen.OrderBy(o => o.Date).ToList();
+            sortedDagen.Reverse();
+            return View(sortedDagen);
         }
         public IActionResult DagDetails(int ID)
         {
             Dag dag = _dagCollection.GetDagById(ID);
-            Console.WriteLine("iets");
-            //DagModel dagModel = new DagModel()
-            //{
-            //    Date = dag.Date,
-            //    Naam = dag.Naam,
-            //    DagType = dag.DagType,
-            //    BeginTijd = dag.BeginTijd,
-            //    EindTijd = dag.EindTijd,
-            //    Beschrijving = dag.Beschrijving
-            //};
             return View(dag);
         }
         public IActionResult CreateDag()

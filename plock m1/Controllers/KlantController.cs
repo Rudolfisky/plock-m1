@@ -19,7 +19,8 @@ namespace plock_m1.Controllers
         public IActionResult KlantList()
         {
             IEnumerable<Klant> klanten = _klantCollection.GetAllKlanten();
-            return View(klanten);
+            List<Klant> sortedKlanten = klanten.OrderBy(o => o.Voornaam).ToList();
+            return View(sortedKlanten);
         }
         //public IActionResult KlantListDag(int dagID)
         //{

@@ -29,20 +29,15 @@
                                 Modules
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" asp-controller="Log" asp-action="DagList">Dag Loggen</a>
+                                <a class="dropdown-item" asp-controller="Dag" asp-action="DagList">Dag Loggen</a>
+                                <a class="dropdown-item" asp-controller="Klant" asp-action="KlantList">Klanten</a>
                                 <a class="dropdown-item disabled" href="#">Karaokee</a>
                             </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Dag" asp-action="DagList">Dagen</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Klant" asp-action="KlantList">Klanten</a>
                         </li>
                     </ul>
                 </div>
                 <form class="form-inline">
-                    <button class="btn btn-outline-secondary my-2 my-sm-0" asp-area="" asp-controller="Home" asp-action="Login">Login</button>
+                    <button class="btn btn-outline-secondary my-2 my-sm-0" asp-area="" asp-controller="Home" asp-action="Login" disabled>Login</button>
                 </form>
             </div>
         </nav>

@@ -4,7 +4,7 @@
     ViewData["Title"] = "KlantList";
 }
 
-<h1>KlantList</h1>
+<h1>Klanten</h1>
 
 <p>
     <a asp-action="CreateKlant">Create New</a>
@@ -75,7 +75,6 @@
             </td>
             <td>
                 @Html.ActionLink("Edit", "KlantUpdate", new {  ID=item.ID }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
                 @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
             </td>
         </tr>

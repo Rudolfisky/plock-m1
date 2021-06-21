@@ -15,6 +15,7 @@ namespace BLL
         {
             _klantCollectionDAL = FactoryKlantDAL.CreateKlantCollectionDAL();
         }
+        // constructor for integration tests
         public KlantCollection(IKlantCollectionDAL klantCollectionDAL)
         {
             _klantCollectionDAL = klantCollectionDAL;

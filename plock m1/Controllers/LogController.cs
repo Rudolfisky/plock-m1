@@ -42,9 +42,9 @@ namespace plock_m1.Controllers
             //{
             //    dagen.Add(new dag(new DateTime(2021, 10, 10), "avond", "20:00", "01:00"));
             //}
-            List<Klant> SortedKlanten = klanten.OrderBy(o => o.Voornaam).ToList();
-            SortedKlanten.Reverse();
-            return View(SortedKlanten);
+            List<Klant> sortedKlanten = klanten.OrderBy(o => o.Voornaam).ToList();
+            sortedKlanten.Reverse();
+            return View(sortedKlanten);
         }
         public IActionResult DagSelected() 
         {

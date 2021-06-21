@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>plock_m1</RootNamespace>
+    <UserSecretsId>849edb28-6c6b-4209-8ac9-5afc8fc4c6d6</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

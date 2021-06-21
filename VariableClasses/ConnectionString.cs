@@ -8,7 +8,7 @@ namespace VariableClasses
     public class ConnectionString
     {
 
-        public string connectionString { get;} = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Plock;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        public string connectionString { get;} = "Server=mssql.fhict.local;Database=dbi467021;User Id=dbi467021;Password=Wachtwoord!;";
 
     }
 }
